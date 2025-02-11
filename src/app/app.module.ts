@@ -1,16 +1,30 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { FormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DropdownComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ButtonModule,
+    FormsModule,
+    TableModule,
+    DropdownModule,
+    ScrollingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

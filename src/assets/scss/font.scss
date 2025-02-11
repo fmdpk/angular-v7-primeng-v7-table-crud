@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'IRANSans';
+    src: url('src/assets/fonts/iransans/IRANSansWeb(FaNum).woff2') format('woff2'),
+        url('src/assets/fonts/iransans/IRANSansWeb(FaNum).woff') format('woff'),
+        url('src/assets/fonts/iransans/IRANSansWeb(FaNum).eot') format('eot'),
+        url('src/assets/fonts/iransans/IRANSansWeb(FaNum).ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    // font-display: fallback;
+    -webkit-font-feature-settings: "ss02";
+    font-feature-settings: "ss02";
+}

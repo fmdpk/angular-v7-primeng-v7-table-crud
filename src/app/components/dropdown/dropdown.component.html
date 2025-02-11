@@ -1,0 +1,5 @@
+<p-dropdown #dropdown [options]="cars" [(ngModel)]="selectedCar" optionLabel="brand">
+  <ng-template let-car pTemplate="item">
+    <div class="p-virtual-scroll-item" [ngClass]="{'drp-loading': loading}">{{car.brand}}</div>
+  </ng-template>
+</p-dropdown>

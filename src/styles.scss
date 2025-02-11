@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./assets/scss/font.scss";
+
+body,
+* {
+  font-family: "IRANSans";
+}
+
+body .ui-table .ui-editable-column input {
+  font-family: "IRANSans" !important;
+}
+
+.ui-table .ui-table-tbody > tr > td.ui-editing-cell {
+  padding-left: 2px !important;
+  padding-right: 2px !important;
+}
+
+body .ui-table .ui-table-tbody > tr > td {
+  border: none !important;
+}
+
+body .ui-table .ui-table-tbody > tr {
+  border-bottom: 1px solid #c8c8c8;
+}

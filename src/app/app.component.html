@@ -1,21 +1,101 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<!-- <p-table [value]="cars" dataKey="brand">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Vin</th>
+      <th>Year</th>
+      <th>Color</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex" let-expanded="expanded" let-columns="columns">
+    <tr class="ui-widget-header" *ngIf="rowGroupMetadata[rowData.brand].index === rowIndex">
+      <td colspan="3">
+        <a href="#" [pRowToggler]="rowData">
+          <i [ngClass]="expanded ? 'fa fa-fw fa-chevron-circle-down' : 'fa fa-fw fa-chevron-circle-right'"></i>
+          <span>{{rowData.brand}}</span>
+        </a>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-rowData let-rowIndex="rowIndex">
+    <tr>
+      <td>{{rowData.vin}}</td>
+      <td>{{rowData.year}}</td>
+      <td>{{rowData.color}}</td>
+    </tr>
+  </ng-template>
+</p-table> -->
 
-<router-outlet></router-outlet>
+<div class="m-t-100">
+  <div class="actions">
+    <button pButton type="button" (click)="addNewRow()" label="افزودن"></button>
+    <button pButton type="button" (click)="submit()" label="ثبت نهایی"></button>
+  </div>
+  <p-table [value]="cars">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Vin</th>
+        <th>Year</th>
+        <th>Brand</th>
+        <th>Color</th>
+        <th class="actions-th">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData>
+      <tr [ngClass]="{'bg-green': rowData && rowData.isNew}">
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.vin">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.vin}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" (focus)="onFocusYear($event, rowData)"
+                (focusout)="onFocusoutYear($event, rowData)" (keydown)="onKeydownYear($event, rowData)"
+                (ngModelChange)="onChangeYear($event)" [(ngModel)]="rowData.year" required>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.year}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-dropdown [options]="brands" [(ngModel)]="rowData.brand" [style]="{'width':'100%'}"
+                placeholder="انتخاب کنید!"></p-dropdown>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.brand}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td pEditableColumn>
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.color">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.color}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="actions-td">
+          <span class="pi pi-trash button" (click)="removeRow(rowData)"></span>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<div class="total-div">
+  <div>
+    <span>count of year: </span>
+    <span>{{countOfYear}}</span>
+  </div>
+</div>
