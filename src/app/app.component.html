@@ -55,7 +55,7 @@
         <td pEditableColumn>
           <p-cellEditor>
             <ng-template pTemplate="input">
-              <input pInputText type="text" (focus)="onFocusYear($event, rowData)"
+              <input pInputText type="number" (focus)="onFocusYear($event, rowData)"
                 (focusout)="onFocusoutYear($event, rowData)" (keydown)="onKeydownYear($event, rowData)"
                 (ngModelChange)="onChangeYear($event)" [(ngModel)]="rowData.year" required>
             </ng-template>

@@ -109,10 +109,10 @@ export class AppComponent {
   onKeydownYear(event: KeyboardEvent, rowData: Car) {
     console.log(event);
 
-    if (event.key === 'Enter') {
-      this.newValue = +rowData.year
-      let difference = this.newValue - this.oldValue
-      this.countOfYear += difference
+    if (event.key === "Enter" || event.key === "Escape") {
+      this.newValue = +rowData.year;
+      let difference = this.newValue - this.oldValue;
+      this.countOfYear += difference;
     }
   }
 
